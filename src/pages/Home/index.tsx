@@ -13,12 +13,9 @@ export default function Home() {
     url: '',
     alt: ''
   })
+  const [show, setShow] = useState(false)
 
   let date = startDate.toISOString().split('T')[0]
-
-  useEffect(() => {
-    fetchInfoByDate()
-  }, [])
     
   async function fetchInfoByDate(){
     const res = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=0SfOrnfS9sHPJRc6JaOfCmtkPri2sczTifeaF3FT&date=${date}`)
@@ -34,6 +31,7 @@ export default function Home() {
       url: data.url,
       alt: data.title
     })
+    setShow(true)
   }
 
   return (
@@ -49,11 +47,12 @@ export default function Home() {
             <button className={styles.btn} onClick={() => requireData()}>TRY</button>
         </div>
 
-        <div className={styles.main__content}>
-          {/* {isFetching && <p>Loading...</p>} */}
+        { show && (
+          <div className={styles.main__content}>
           <p>{displayData.text}</p>
-          <img src={displayData.url} alt={displayData.alt} />
+          <img src={displayData.url} alt={displayData.alt} loading="lazy" />
         </div>
+        )}
       </div>
 
     </>
