@@ -41,17 +41,19 @@ export default function AstronomyPic() {
       <div className={styles.content__wrapper}>
         <div className={styles.menu}>
           <h1>Find something cool :)</h1>
-            <div> 
+
               <DatePicker className={styles.date}  selected={startDate} onChange={(date:Date) => setStartDate(date)} />
-            </div>
+
             <button className={styles.btn} onClick={() => requireData()}>TRY</button>
         </div>
 
         { show && (
           <div className={styles.main__content}>
-          <p>{displayData.text}</p>
-          <img src={displayData.url} alt={displayData.alt} loading="lazy" />
-        </div>
+            <p>{displayData.text}</p>
+            <div className={styles.img__container}>
+              <img src={displayData.url} alt={displayData.alt} loading="lazy" />
+            </div>
+          </div>
         )}
       </div>
 

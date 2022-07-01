@@ -6,8 +6,30 @@
   height: 100vh;
 }
 
+.main {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 4vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
 .stars_wrapper {
   height: 100%;
+  z-index: -1;
 }
 
 .stars {
