@@ -2,7 +2,7 @@ import {
   BrowserRouter, Routes, Route, Navigate
 } from "react-router-dom";
 
-import { Home } from './pages'
+import { Home, AstronomyPic } from './pages'
 
 const Router = () => {
 
@@ -10,6 +10,7 @@ const Router = () => {
     <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<Home />} />
+          <Route path="/astronomy-pics" exact element={<AstronomyPic />} />
         </Routes>
     </BrowserRouter>
   )
