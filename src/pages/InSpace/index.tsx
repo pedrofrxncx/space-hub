@@ -14,7 +14,7 @@ type Response = {
 
 export default function InSpace() {
   const { data, isFetching } = useQuery<Response>('astronauts', async () => {
-    const response = await axios.get('http://api.open-notify.org/astros.json')
+    const response = await axios.get('//api.open-notify.org/astros.json')
 
     return response.data
   }, {
