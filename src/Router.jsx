@@ -2,7 +2,7 @@ import {
   BrowserRouter, Routes, Route, Navigate
 } from "react-router-dom";
 
-import { Home, AstronomyPic } from './pages'
+import { Home, AstronomyPic, InSpace } from './pages'
 
 const Router = () => {
 
@@ -11,6 +11,7 @@ const Router = () => {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/astronomy-pics" exact element={<AstronomyPic />} />
+          <Route path="/in-space" exact element={<InSpace />} />
         </Routes>
     </BrowserRouter>
   )
