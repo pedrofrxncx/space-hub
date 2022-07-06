@@ -18,6 +18,17 @@
 
   img {
     max-height: 700px;
+
+    animation: launch 2s ease-out;
+  }
+}
+
+@keyframes launch {
+  from {
+    transform: translateY(1000px);
+  }
+  to {
+    transform: translateY(0);
   }
 }
 
