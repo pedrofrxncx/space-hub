@@ -21,8 +21,7 @@ export default function Header() {
         <ul>
           <li><Link to="/astronomy-pics">Astronomy Picture</Link></li>
           <li><Link to="/">Home</Link></li>
-          <li><Link to="/in-space">Astronauts in Space</Link></li>
-          <li></li>
+          <li><Link to="/iss">ISS</Link></li>
         </ul>
       </nav>
     }
