@@ -12,14 +12,147 @@
   gap: 3rem;
   align-items: center;
   justify-content: center;
-  background: transparent;
 
   height: 100%;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 0px;
+  }
+}
+
+.explicative {
+  height: 100%;
+  max-height: 900px;
+  width: 100%;
+  padding: 1rem 2rem;
+
+  @media (max-width: 768px) {
+    height: 40%;
+  }
+
+  h1 {
+    font-size: 4rem;
+    text-align: center;
+
+    span {
+      color: #736396;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+      span {
+        color: inherit;
+      }
+    }
+  }
+
+  p {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    display: grid;
+    grid-template-rows: 120px 120px;
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    padding: 1rem 0;
+
+    li {
+      display: flex;
+      justify-content: center;
+      transition: 0.3s;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    @media (max-width: 768px) {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      img {
+        width: 80px;
+      }
+    }
+
+    @media (max-width: 425px) {
+      img {
+        width: 48px;
+      }
+    }
+  }
+
+  img {
+    max-width: 120px;
+  }
+}
+
+.rocket {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   img {
     max-height: 700px;
-
     animation: launch 2s ease-out;
+
+    @media (max-width: 768px) {
+      max-height: 400px;
+    }
+  }
+}
+
+.launch_button {
+  border: 1px solid var(--white);
+  padding: 1rem 3.5rem;
+  cursor: pointer;
+}
+
+.down {
+  transform: translateY(300px);
+  transition: 1s;
+
+  @media (max-width: 768px) {
+    transition-delay: 1s;
+  }
+}
+
+.up {
+  transform: translateY(-2000px);
+  transition: 2s;
+
+  @media (max-width: 768px) {
+    transform: translateY(-1000px);
+    transition: 2s;
+    transition-delay: 1s;
+  }
+}
+
+.hide {
+  @media (min-width: 769px) {
+    animation: hide 1s;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+  }
+}
+
+.hide_2 {
+  @media (max-width: 768px) {
+    transform: translateX(100%);
+    transition: 1.5s;
+    animation: hide_2 5s;
+    animation-fill-mode: forwards;
+    animation-delay: 1.2s;
   }
 }
 
@@ -29,6 +162,27 @@
   }
   to {
     transform: translateY(0);
+  }
+}
+
+@keyframes hide {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+@keyframes hide_2 {
+  0% {
+    height: 0;
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateY(300px);
   }
 }
 

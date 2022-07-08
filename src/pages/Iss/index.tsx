@@ -3,17 +3,57 @@ import axios from 'axios'
 import { useQuery } from 'react-query'
 import Header from '../../components/Header'
 import iss from '../../assets/iss.png'
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
 
+interface Response {
+  latitude: number 
+  longitude: number
+  velocity: number
+  altitude: number
+}
+
+interface DisplayData {
+  lat: string | undefined
+  lng: string | undefined
+  velocity: string | undefined
+  altitude: string | undefined
+}
+
+// type Center = {
+//   lat: number | undefined,
+//   lng: number | undefined
+// }
 
 export default function Iss() {
   const { data, isFetching } = useQuery<Response>('astronauts', async () => {
-    const response = await axios.get('//api.open-notify.org/astros.json')
+    const response = await axios.get('https://api.wheretheiss.at/v1/satellites/25544')
 
     return response.data
   }, {
-    // data refresh rate set to 1 day
-    staleTime: 1000 * 86400 
+    refetchInterval: 1001 //ms
   })
+
+  const displayData: DisplayData = {
+    lat: data?.latitude.toString(),
+    lng: data?.longitude.toString(),
+    velocity: data?.velocity.toString(),
+    altitude: data?.altitude.toString(),
+  }
+
+  // const { isLoaded } = useJsApiLoader({
+  //   id: 'google-map-script',
+  //   googleMapsApiKey: 'AIzaSyBm5Yoyml5QSjjQJ7XtgaWptGTRd5wCQCU'
+  // })
+
+  // const containerStyle = {
+  //   width: '400px',
+  //   height: '400px',
+  // }
+
+  // const center: Center = {
+  //   lat: displayData.lat,
+  //   lng: displayData.lng
+  // }
 
   return (
     <>
@@ -30,6 +70,27 @@ export default function Iss() {
           <img src={iss} alt="" />
         </section>
 
+        <div className={styles.displayInfo}>
+          <span>Lat: {displayData.lat}</span>
+          <span>Long: {displayData.lng}</span>
+          <span>Alt: {displayData.altitude} km</span>
+          <span className={styles.last}>Speed: {displayData.velocity} km/h</span>
+        </div>
+
+        {/* <div className={styles.map_wrapper}>
+          {isLoaded ? (
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={center}
+              zoom={10}
+            >
+
+            </GoogleMap>  
+          )
+          :
+            <></>
+          }
+        </div> */}
       </body>
     </>
   )

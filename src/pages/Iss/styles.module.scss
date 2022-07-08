@@ -49,6 +49,42 @@
   }
 }
 
+.displayInfo {
+  border: 1px solid var(--white);
+  display: flex;
+  padding: 1rem;
+  margin: 0 1rem;
+  margin-top: 4rem;
+
+  span {
+    height: inherit;
+    display: flex;
+    padding: 1rem 0.5rem;
+    text-align: center;
+    align-items: center;
+    border-right: 1px solid var(--white);
+    justify-content: center;
+  }
+
+  .last {
+    border: none;
+    padding-right: 0;
+  }
+
+  @media (max-width: 585px) {
+    flex-direction: column;
+
+    span {
+      border-right: 0;
+      border-bottom: 1px solid var(--white);
+    }
+
+    .last {
+      border: none;
+    }
+  }
+}
+
 //  STARS
 
 .stars_wrapper {
