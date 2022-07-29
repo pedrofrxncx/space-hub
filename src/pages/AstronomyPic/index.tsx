@@ -14,13 +14,18 @@ export default function AstronomyPic() {
     alt: ''
   })
   const [show, setShow] = useState(false)
+  const [showModal, setShowModal] = useState(true)
 
   let date = startDate.toISOString().split('T')[0]
     
   async function fetchInfoByDate(){
-    const res = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=0SfOrnfS9sHPJRc6JaOfCmtkPri2sczTifeaF3FT&date=${date}`)
+    try {
+      const res = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=0SfOrnfS9sHPJRc6JaOfCmtkPri2sczTifeaF3FT&date=${date}`)
     let data = res.data
     return data
+    } catch (error) {
+      alert('You must pick a past date.')
+    }
   }
 
   async function requireData() {
@@ -34,13 +39,22 @@ export default function AstronomyPic() {
     setShow(true)
   }
 
+  async function handleDate() {
+    // console.log('oi')
+
+    const data = await fetchInfoByDate()
+    console.log(data)
+  }
+
+
+
   return (
     <>
       <Header />
 
       <div className={styles.content__wrapper}>
         <div className={styles.menu}>
-          <h1>Find something cool :)</h1>
+          <h1>Pick a date!</h1>
 
               <DatePicker className={styles.date}  selected={startDate} onChange={(date:Date) => setStartDate(date)} />
 

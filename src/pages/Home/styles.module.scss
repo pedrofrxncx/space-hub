@@ -1,5 +1,5 @@
 * {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .body {
@@ -29,7 +29,7 @@
   padding: 1rem 2rem;
 
   @media (max-width: 768px) {
-    height: 40%;
+    height: fit-content;
   }
 
   h1 {
@@ -62,7 +62,7 @@
     justify-content: center;
     height: 100%;
     align-items: center;
-    padding: 1rem 0;
+    padding-top: 1rem;
 
     li {
       display: flex;
@@ -107,8 +107,12 @@
     animation: launch 2s ease-out;
 
     @media (max-width: 768px) {
-      max-height: 400px;
+      max-height: 260px;
     }
+  }
+
+  @media (max-width: 768px) {
+    height: fit-content;
   }
 }
 
@@ -116,6 +120,10 @@
   border: 1px solid var(--white);
   padding: 1rem 3.5rem;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    padding: 0.75rem 3.5rem;
+  }
 }
 
 .down {
@@ -153,6 +161,11 @@
     animation: hide_2 5s;
     animation-fill-mode: forwards;
     animation-delay: 1.2s;
+    // transform: translateX(100%);
+    // transition: 1s ease-in;
+    // animation: hide_2 2s;
+    // animation-fill-mode: forwards;
+    // animation-delay: 1;
   }
 }
 
@@ -182,7 +195,8 @@
     transform: translateX(0%);
   }
   100% {
-    transform: translateY(300px);
+    height: 100%;
+    transform: translateY(100px);
   }
 }
 
